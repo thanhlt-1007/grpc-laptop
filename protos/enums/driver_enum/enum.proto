@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package protos.enums.driver_enum;
 
-option go_package = "grpc-laptop/go-protos/enums/driver_enum";
+option go_package = "grpc-laptop/go_protos/enums/driver_enum";
 
 enum Driver {
   UNKNOWN = 0;
