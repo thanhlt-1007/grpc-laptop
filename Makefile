@@ -1,13 +1,13 @@
 clear:
-	rm -rf go-protos;
+	rm -rf go_protos;
 	clear
 
 compile:
-	mkdir -p go-protos;
+	mkdir -p go_protos;
 	protoc \
 		--proto_path=protos \
 		protos/enums/**/*.proto \
 		protos/messages/*.proto \
-		--go_out=go-protos \
+		--go_out=go_protos \
 		--go_opt=paths=source_relative \
 		--go-grpc_out=.

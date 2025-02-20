@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package protos.enums.unit_enum;
 
-option go_package = "grpc-laptop/go-protos/enums/unit_enum";
+option go_package = "grpc-laptop/go_protos/enums/unit_enum";
 
 enum Unit {
   UNKNOWN = 0;

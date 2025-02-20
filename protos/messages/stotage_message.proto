@@ -5,7 +5,7 @@ package protos.message;
 import "enums/driver_enum/enum.proto";
 import "messages/memory_message.proto";
 
-option go_package = "grpc-laptop/go-protos/messages";
+option go_package = "grpc-laptop/go_protos/messages";
 
 message Storage {
   protos.enums.driver_enum.Driver driver = 1;
