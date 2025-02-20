@@ -59,3 +59,15 @@ protoc-gen-go --version # protoc-gen-go v1.36.5
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1
 protoc-gen-go-grpc --version # protoc-gen-go-grpc 1.5.1
 ```
+
+## go mod tidy
+
+```sh
+go mod tidy
+```
+
+## Buid protos
+
+```sh
+make compile
+```
