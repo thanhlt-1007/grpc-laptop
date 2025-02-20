@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protobuf.protos.enums;
+
+option go_package = "go/protos/enums";
+
+enum Unit {
+  UNKNOWN = 0;
+  BIT = 1;
+  BYTE = 2;
+  KILO_BYTE = 3;
+  MEGA_BYTE = 4;
+  GIGA_BYTE = 5;
+  TERA_BYTE = 6;
+}
