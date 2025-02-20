@@ -4,7 +4,7 @@ import "enums/unit_enum.proto";
 
 package protos.messages;
 
-option go_package = "go/protos/messages";
+option go_package = "github.com/thanhlt-1007/grpc-laptop/go/protos/messages";
 
 message Memory {
   uint64 value = 1;
