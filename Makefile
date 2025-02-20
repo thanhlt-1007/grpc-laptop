@@ -1,3 +1,6 @@
+clear:
+	rm -rf go_protos
+
 compile:
 	protoc \
 		--proto_path=protos protos/**/*.proto \
