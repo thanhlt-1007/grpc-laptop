@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-import "enums/unit_enum.proto";
-
 package protos.messages;
 
-option go_package = "github.com/thanhlt-1007/grpc-laptop/go/protos/messages";
+import "enums/unit_enum.proto";
+
+option go_package = "github.com/thanhlt-1007/grpc-laptop/go-protos/messages";
 
 message Memory {
   uint64 value = 1;
