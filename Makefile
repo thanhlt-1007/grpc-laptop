@@ -1,7 +1,8 @@
 clear:
-	rm -rf go_protos
+	rm -rf go-protos
 
 compile:
+	mkdir -p go-protos;
 	protoc \
 		--proto_path=protos protos/**/*.proto \
 		--go_out=go-protos --go_opt=paths=source_relative \
