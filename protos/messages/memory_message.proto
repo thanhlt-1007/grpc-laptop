@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "enums/unit_enum.proto";
+
+package protos.messages;
+
+option go_package = "go/protos/messages";
+
+message Memory {
+  uint64 value = 1;
+  protos.enums.Unit unit = 2;
+}
