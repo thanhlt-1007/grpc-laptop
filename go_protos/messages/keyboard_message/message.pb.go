@@ -9,7 +9,7 @@ package keyboard_message
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	layout_enum "grpc-laptop/gp_protos/enums/layout_enum"
+	layout_enum "grpc-laptop/go_protos/enums/layout_enum"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
