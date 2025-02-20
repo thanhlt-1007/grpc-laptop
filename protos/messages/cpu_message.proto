@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package protos.messages;
 
-option go_package = "github.com/thanhlt-1007/grpc-laptop/go/protos/messages";
+option go_package = "github.com/thanhlt-1007/grpc-laptop/go-protos/messages";
 
 message CPU  {
   string brand = 1;

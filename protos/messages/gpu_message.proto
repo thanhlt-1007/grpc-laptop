@@ -2,11 +2,14 @@ syntax = "proto3";
 
 package protos.messages;
 
-option go_package = "github.com/thanhlt-1007/grpc-laptop/go/protos/messages";
+import "messages/memory_message.proto";
+
+option go_package = "github.com/thanhlt-1007/grpc-laptop/go-protos/messages";
 
 message GPU {
   string brand = 1;
   string name = 2;
   double min_ghz = 3;
   double max_ghz = 4;
+  protos.messages.Memory memory = 5;
 }
