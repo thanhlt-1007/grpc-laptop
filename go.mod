@@ -1,4 +1,4 @@
-module github.com/thanhlt-1007/grpc-laptop
+module grpc-laptop
 
 go 1.24.0
 

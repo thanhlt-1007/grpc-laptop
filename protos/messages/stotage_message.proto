@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protos.message;
+
+import "enums/driver_enum.proto";
+import "messages/memory_message.proto";
+
+option go_package = "grpc-laptop/go-protos/messages";
+
+message Storage {
+  protos.enums.Driver driver = 1;
+  protos.messages.Memory memory = 2;
+}
