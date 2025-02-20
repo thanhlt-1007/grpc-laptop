@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package protos.messages;
 
-import "enums/unit_enum.proto";
+import "enums/unit_enum/enum.proto";
 
 option go_package = "grpc-laptop/go-protos/messages";
 
 message Memory {
   uint64 value = 1;
-  protos.enums.Unit unit = 2;
+  protos.enums.unit_enum.Unit unit = 2;
 }

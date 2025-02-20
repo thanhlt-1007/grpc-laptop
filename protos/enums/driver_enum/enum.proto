@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protos.enums.driver_enum;
+
+option go_package = "grpc-laptop/go-protos/enums/driver_enum";
+
+enum Driver {
+  UNKNOWN = 0;
+  HDD = 1;
+  SSD = 2;
+}
