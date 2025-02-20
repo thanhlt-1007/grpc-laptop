@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package protobuf.protos.enums;
+package protos.enums;
 
 option go_package = "go/protos/enums";
 

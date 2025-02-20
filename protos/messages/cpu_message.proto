@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package protobuf.protos.messages;
+package protos.messages;
 
 option go_package = "go/protos/messages";
 
