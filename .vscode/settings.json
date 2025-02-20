@@ -6,4 +6,9 @@
     "[go]": {
         "editor.formatOnSave": true,
     },
+    "protoc": {
+        "options": [
+            "--proto_path=protos",
+        ]
+    }
 }
