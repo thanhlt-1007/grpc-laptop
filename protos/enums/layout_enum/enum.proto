@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protos.enums.layout_enum;
+
+option go_package = "grpc-laptop/gp_protos/enums/layout_enum";
+
+enum Layout {
+  UNKNOWN = 0;
+  QWERTY = 1;
+  AZERTY = 2;
+}

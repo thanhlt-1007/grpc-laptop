@@ -8,6 +8,7 @@ compile:
 		--proto_path=protos \
 		protos/enums/**/*.proto \
 		protos/messages/*.proto \
+		protos/messages/**/*.proto \
 		--go_out=go_protos \
 		--go_opt=paths=source_relative \
 		--go-grpc_out=.

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package protos.messages.keyboard_message;
+
+import "enums/layout_enum/enum.proto";
+
+option go_package = "grpc-laptop/go_protos/messages/keyboard_message";
+
+message Keyboard {
+  protos.enums.layout_enum.Layout layout = 1;
+  bool backlist = 2;
+}
