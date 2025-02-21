@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package protos.messages.laptop_message;
+
+import "messages/cpu_message/message.proto";
+import "messages/memory_message/message.proto";
+import "messages/gpu_message/message.proto";
+import "messages/storage_message/message.proto";
+import "messages/screen_message/message.proto";
+import "messages/keyboard_message/message.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "grpc-laptop/go_protos/messages/laptop_message";
+
+message Laptop {
+  string id = 1;
+  string brand = 2;
+  string name = 3;
+  protos.messages.cpu_message.CPU cpu = 4;
+  protos.messages.memory_message.Memory memory = 5;
+  repeated protos.messages.gpu_message.GPU gpu = 6;
+  repeated protos.messages.storage_message.Storage storage = 7;
+  protos.messages.screen_message.Screen screen = 8;
+  protos.messages.keyboard_message.Keyboard keyboard = 9;
+  oneof weight {
+    double weight_kg = 10;
+    double weight_lb = 11;
+  }
+  double price_usd = 12;
+  uint32 release_year = 13;
+  google.protobuf.Timestamp updated_at = 14;
+}
