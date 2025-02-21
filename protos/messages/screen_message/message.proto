@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package protos.messages.screen_messages;
+package protos.messages.screen_message;
 
 import "messages/resolution_message/message.proto";
 import "enums/panel_enum/enum.proto";
