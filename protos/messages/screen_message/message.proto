@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protos.messages.screen_messages;
+
+import "messages/resolution_message/message.proto";
+import "enums/panel_enum/enum.proto";
+
+option go_package = "grpc-laptop/go_protos/messages/screen_message";
+
+message Screen {
+  float size_inch = 1;
+  protos.messages.resolution_message.Resolution resolution = 2;
+  protos.enums.panel_enum.Panel panel = 3;
+  bool multitouch = 4;
+}
