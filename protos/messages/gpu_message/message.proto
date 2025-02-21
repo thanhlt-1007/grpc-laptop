@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package protos.messages;
+package protos.messages.gpu_message;
 
 import "messages/memory_message.proto";
 
-option go_package = "grpc-laptop/go_protos/messages";
+option go_package = "grpc-laptop/go_protos/messages/gpu_message";
 
 message GPU {
   string brand = 1;
