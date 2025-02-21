@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package protos.message;
+package protos.message.stotage_message;
 
 import "enums/driver_enum/enum.proto";
 import "messages/memory_message/message.proto";
 
-option go_package = "grpc-laptop/go_protos/messages";
+option go_package = "grpc-laptop/go_protos/messages/stotage_message";
 
 message Storage {
   protos.enums.driver_enum.Driver driver = 1;
