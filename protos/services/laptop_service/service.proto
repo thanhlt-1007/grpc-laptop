@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package protos.services.laptop_service;
+
+import "messages/laptop_message/message.proto";
+
+option go_package = "grpc-laptop/go_protos/services/laptop_service";
+
+message CreateLaptopRequest {
+  protos.messages.laptop_message.Laptop laptop = 1;
+}
+
+message CreateLaptopResponse {
+  string id = 1;
+}
+
+service LaptopService {
+  rpc CreateLaptop(CreateLaptopRequest) returns (CreateLaptopResponse) {};
+}
