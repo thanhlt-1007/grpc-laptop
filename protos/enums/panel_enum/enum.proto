@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protos.enums.panel_enum;
+
+option go_package = "grpc-laptop/go_protos/enums/panel_enum";
+
+enum Panel {
+  UNKNOWN = 0;
+  IPS = 1;
+  OLED = 2;
+}
