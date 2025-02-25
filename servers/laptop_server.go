@@ -14,12 +14,12 @@ import (
 )
 
 type LaptopServer struct {
-	store stores.InMemoryLaptopStore
+	store *stores.InMemoryLaptopStore
 }
 
-func NewLaptopServer() *LaptopServer {
+func NewLaptopServer(store *stores.InMemoryLaptopStore) *LaptopServer {
 	server := &LaptopServer{
-		store: stores.InMemoryLaptopStore{},
+		store: store,
 	}
 	return server
 }
