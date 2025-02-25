@@ -14,13 +14,13 @@ import (
 )
 
 type LaptopServer struct {
-	store *stores.InMemoryLaptopStore
+	Store *stores.InMemoryLaptopStore
 	laptop_service.LaptopServiceServer
 }
 
 func NewLaptopServer(store *stores.InMemoryLaptopStore) *LaptopServer {
 	server := &LaptopServer{
-		store: store,
+		Store: store,
 	}
 	return server
 }
@@ -47,7 +47,7 @@ func (server *LaptopServer) CreateLaptop(
 		laptop.Id = id.String()
 	}
 
-	err := server.store.Save(laptop)
+	err := server.Store.Save(laptop)
 	if err != nil {
 		code := codes.Internal
 		if errors.Is(err, stores.ErrAlreadyExists) {
