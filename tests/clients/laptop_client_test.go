@@ -18,7 +18,7 @@ import (
 func TestLaptopClientCreateLaptop(test *testing.T) {
 	test.Parallel()
 
-	_, serverAddr := startLaptopServerTest(test)
+	laptopServer, serverAddr := startLaptopServerTest(test)
 	laptopClient := newLaptopClientTest(test, serverAddr)
 
 	laptop := &laptop_message.Laptop{
@@ -33,6 +33,11 @@ func TestLaptopClientCreateLaptop(test *testing.T) {
 	require.NoError(test, err)
 	require.NotNil(test, response)
 	require.Equal(test, response.Id, laptop.Id)
+
+	inStoreLaptop, err := laptopServer.Store.Find(laptop.Id)
+	require.NoError(test, err)
+	require.NotNil(test, inStoreLaptop)
+	require.Equal(test, inStoreLaptop.Id, laptop.Id)
 }
 
 func startLaptopServerTest(test *testing.T) (*servers.LaptopServer, string) {

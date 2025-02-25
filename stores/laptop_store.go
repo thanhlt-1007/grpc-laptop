@@ -12,6 +12,7 @@ import (
 
 type LaptopStore interface {
 	Save(laptop *laptop_message.Laptop) error
+	Find(id string) (*laptop_message.Laptop, error)
 }
 
 var ErrAlreadyExists = errors.New("AlreadyExists")
@@ -45,4 +46,22 @@ func (store *InMemoryLaptopStore) Save(laptop *laptop_message.Laptop) error {
 
 	store.data[newLaptop.Id] = newLaptop
 	return nil
+}
+
+func (store *InMemoryLaptopStore) Find(id string) (*laptop_message.Laptop, error) {
+	store.mutex.Lock()
+	defer store.mutex.Unlock()
+
+	laptop := store.data[id]
+	if laptop == nil {
+		return nil, nil
+	}
+
+	copyLaptop := &laptop_message.Laptop{}
+	err := copier.Copy(copyLaptop, laptop)
+	if err != nil {
+		return nil, fmt.Errorf("Can't copy laptop %#v", err)
+	}
+
+	return copyLaptop, nil
 }
