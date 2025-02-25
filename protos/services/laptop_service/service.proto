@@ -16,7 +16,7 @@ message CreateLaptopResponse {
 }
 
 message SearchLaptopRequest {
-  protos.messages.filter_message.FilterMessage filter = 1;
+  protos.messages.filter_message.Filter filter = 1;
 }
 
 message SearchLaptopResponse {
@@ -25,5 +25,5 @@ message SearchLaptopResponse {
 
 service LaptopService {
   rpc CreateLaptop(CreateLaptopRequest) returns (CreateLaptopResponse) {};
-  rpc SearchLaptop(CreateLaptopRequest) returns (stream CreateLaptopResponse) {};
+  rpc SearchLaptop(SearchLaptopRequest) returns (stream SearchLaptopResponse) {};
 }
