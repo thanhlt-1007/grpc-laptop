@@ -16,3 +16,6 @@ compile:
 test:
 	go clean -testcache;
 	go test ./tests/...
+
+run_server:
+	go run cmd/server/main.go -port 8080
