@@ -15,6 +15,7 @@ import (
 
 type LaptopServer struct {
 	store *stores.InMemoryLaptopStore
+	laptop_service.LaptopServiceServer
 }
 
 func NewLaptopServer(store *stores.InMemoryLaptopStore) *LaptopServer {
