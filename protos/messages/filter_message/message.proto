@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package protos.messages.filter_message;
+
+import "messages/memory_message/message.proto";
+
+option go_package = "grpc-laptop/go_protos/messages/filter_message";
+
+message FilterMessage {
+  double max_price_usd = 1;
+  uint32 min_cpu_cores = 2;
+  double min_cpu_ghz = 3;
+  protos.messages.memory_message.Memory min_ram = 4;
+}
