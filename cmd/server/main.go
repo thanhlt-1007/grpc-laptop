@@ -3,11 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"net"
+
 	"grpc-laptop/go_protos/services/laptop_service"
 	"grpc-laptop/servers"
 	"grpc-laptop/stores"
-	"log"
-	"net"
 
 	"google.golang.org/grpc"
 )
