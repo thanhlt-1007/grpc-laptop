@@ -2,11 +2,12 @@ package servers_test
 
 import (
 	"context"
+	"testing"
+
 	"grpc-laptop/go_protos/messages/laptop_message"
 	"grpc-laptop/go_protos/services/laptop_service"
 	"grpc-laptop/servers"
 	"grpc-laptop/stores"
-	"testing"
 
 	"github.com/google/uuid"
 
@@ -22,7 +23,7 @@ type TestNewLaptopServerTestCase struct {
 	code   codes.Code
 }
 
-func TestNewLaptopServer(test *testing.T) {
+func TestLaptopServerCreateLaptop(test *testing.T) {
 	test.Parallel()
 
 	newLaptopWithId := &laptop_message.Laptop{
