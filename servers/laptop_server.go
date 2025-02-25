@@ -6,11 +6,13 @@ import (
 	"log"
 
 	"grpc-laptop/go_protos/services/laptop_service"
+	"grpc-laptop/go_protos/messages/laptop_message"
 	"grpc-laptop/stores"
 
 	"github.com/google/uuid"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/grpc"
 )
 
 type LaptopServer struct {
@@ -62,4 +64,29 @@ func (server *LaptopServer) CreateLaptop(
 		Id: laptop.Id,
 	}
 	return &response, nil
+}
+
+func (server *LaptopServer) SearchLaptop(
+	request *laptop_service.SearchLaptopRequest,
+	stream  grpc.ServerStreamingServer[laptop_service.SearchLaptopResponse],
+) error {
+	filter := request.GetFilter()
+	err := server.Store.Search(
+		filter,
+		func(laptop *laptop_message.Laptop) error {
+			response := &laptop_service.SearchLaptopResponse{
+				Laptop: laptop,
+			}
+			err := stream.Send(response)
+			if err != nil {
+				return err
+			}
+
+			log.Printf("found laptop ID: %s", laptop.GetId())
+
+			return nil
+		},
+	)
+
+	return err
 }

@@ -28,7 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type LaptopServiceClient interface {
 	CreateLaptop(ctx context.Context, in *CreateLaptopRequest, opts ...grpc.CallOption) (*CreateLaptopResponse, error)
-	SearchLaptop(ctx context.Context, in *CreateLaptopRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CreateLaptopResponse], error)
+	SearchLaptop(ctx context.Context, in *SearchLaptopRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SearchLaptopResponse], error)
 }
 
 type laptopServiceClient struct {
@@ -49,13 +49,13 @@ func (c *laptopServiceClient) CreateLaptop(ctx context.Context, in *CreateLaptop
 	return out, nil
 }
 
-func (c *laptopServiceClient) SearchLaptop(ctx context.Context, in *CreateLaptopRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CreateLaptopResponse], error) {
+func (c *laptopServiceClient) SearchLaptop(ctx context.Context, in *SearchLaptopRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SearchLaptopResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &LaptopService_ServiceDesc.Streams[0], LaptopService_SearchLaptop_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[CreateLaptopRequest, CreateLaptopResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[SearchLaptopRequest, SearchLaptopResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -66,14 +66,14 @@ func (c *laptopServiceClient) SearchLaptop(ctx context.Context, in *CreateLaptop
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LaptopService_SearchLaptopClient = grpc.ServerStreamingClient[CreateLaptopResponse]
+type LaptopService_SearchLaptopClient = grpc.ServerStreamingClient[SearchLaptopResponse]
 
 // LaptopServiceServer is the server API for LaptopService service.
 // All implementations must embed UnimplementedLaptopServiceServer
 // for forward compatibility.
 type LaptopServiceServer interface {
 	CreateLaptop(context.Context, *CreateLaptopRequest) (*CreateLaptopResponse, error)
-	SearchLaptop(*CreateLaptopRequest, grpc.ServerStreamingServer[CreateLaptopResponse]) error
+	SearchLaptop(*SearchLaptopRequest, grpc.ServerStreamingServer[SearchLaptopResponse]) error
 	mustEmbedUnimplementedLaptopServiceServer()
 }
 
@@ -87,7 +87,7 @@ type UnimplementedLaptopServiceServer struct{}
 func (UnimplementedLaptopServiceServer) CreateLaptop(context.Context, *CreateLaptopRequest) (*CreateLaptopResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLaptop not implemented")
 }
-func (UnimplementedLaptopServiceServer) SearchLaptop(*CreateLaptopRequest, grpc.ServerStreamingServer[CreateLaptopResponse]) error {
+func (UnimplementedLaptopServiceServer) SearchLaptop(*SearchLaptopRequest, grpc.ServerStreamingServer[SearchLaptopResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method SearchLaptop not implemented")
 }
 func (UnimplementedLaptopServiceServer) mustEmbedUnimplementedLaptopServiceServer() {}
@@ -130,15 +130,15 @@ func _LaptopService_CreateLaptop_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _LaptopService_SearchLaptop_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(CreateLaptopRequest)
+	m := new(SearchLaptopRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LaptopServiceServer).SearchLaptop(m, &grpc.GenericServerStream[CreateLaptopRequest, CreateLaptopResponse]{ServerStream: stream})
+	return srv.(LaptopServiceServer).SearchLaptop(m, &grpc.GenericServerStream[SearchLaptopRequest, SearchLaptopResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LaptopService_SearchLaptopServer = grpc.ServerStreamingServer[CreateLaptopResponse]
+type LaptopService_SearchLaptopServer = grpc.ServerStreamingServer[SearchLaptopResponse]
 
 // LaptopService_ServiceDesc is the grpc.ServiceDesc for LaptopService service.
 // It's only intended for direct use with grpc.RegisterService,

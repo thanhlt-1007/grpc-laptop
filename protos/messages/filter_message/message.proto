@@ -6,7 +6,7 @@ import "messages/memory_message/message.proto";
 
 option go_package = "grpc-laptop/go_protos/messages/filter_message";
 
-message FilterMessage {
+message Filter {
   double max_price_usd = 1;
   uint32 min_cpu_cores = 2;
   double min_cpu_ghz = 3;
