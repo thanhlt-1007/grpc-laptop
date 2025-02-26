@@ -91,15 +91,15 @@ func (store *InMemoryLaptopStore) Search(filter *filter_message.Filter, found fu
 }
 
 func isMatchFilter(filter *filter_message.Filter, laptop *laptop_message.Laptop) bool {
-	if (laptop.PriceUsd > filter.MaxPriceUsd) {
+	if laptop.PriceUsd > filter.MaxPriceUsd {
 		return false
 	}
 
-	if (laptop.Cpu.NumberCores < filter.MinCpuCores) {
+	if laptop.Cpu.NumberCores < filter.MinCpuCores {
 		return false
 	}
 
-	if (laptop.Cpu.MinGhz < filter.MinCpuGhz) {
+	if laptop.Cpu.MinGhz < filter.MinCpuGhz {
 		return false
 	}
 

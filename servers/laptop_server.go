@@ -5,14 +5,14 @@ import (
 	"errors"
 	"log"
 
-	"grpc-laptop/go_protos/services/laptop_service"
 	"grpc-laptop/go_protos/messages/laptop_message"
+	"grpc-laptop/go_protos/services/laptop_service"
 	"grpc-laptop/stores"
 
 	"github.com/google/uuid"
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/grpc"
 )
 
 type LaptopServer struct {
@@ -68,7 +68,7 @@ func (server *LaptopServer) CreateLaptop(
 
 func (server *LaptopServer) SearchLaptop(
 	request *laptop_service.SearchLaptopRequest,
-	stream  grpc.ServerStreamingServer[laptop_service.SearchLaptopResponse],
+	stream grpc.ServerStreamingServer[laptop_service.SearchLaptopResponse],
 ) error {
 	filter := request.GetFilter()
 	err := server.Store.Search(

@@ -12,6 +12,24 @@ import (
 	"google.golang.org/grpc"
 )
 
+func createLaptop(laptopClient laptop_service.LaptopServiceClient) {
+	laptop := &laptop_message.Laptop{
+		Id: uuid.New().String(),
+	}
+
+	request := &laptop_service.CreateLaptopRequest{
+		Laptop: laptop,
+	}
+
+	_, err := laptopClient.CreateLaptop(context.Background(), request)
+	if err != nil {
+		log.Fatalf("can't create laptop: %#v", err)
+		return
+	}
+
+	log.Printf("created laptop with Id: %s\n", laptop.Id)
+}
+
 func main() {
 	address := flag.String("address", "", "server address")
 	flag.Parse()
@@ -23,19 +41,5 @@ func main() {
 	}
 
 	laptopClient := laptop_service.NewLaptopServiceClient(conn)
-
-	laptop := &laptop_message.Laptop{
-		Id: uuid.New().String(),
-	}
-	request := &laptop_service.CreateLaptopRequest{
-		Laptop: laptop,
-	}
-
-	_, err = laptopClient.CreateLaptop(context.Background(), request)
-	if err != nil {
-		log.Fatalf("can't create laptop: %#v", err)
-		return
-	}
-
-	log.Printf("created laptop with Id: %s\n", laptop.Id)
+	createLaptop(laptopClient)
 }
